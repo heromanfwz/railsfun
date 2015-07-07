@@ -1,6 +1,8 @@
 class Product < ActiveRecord::Base
   validates 		:title, :description, presence: true
   validate 			:title_is_shorter_than_description
+  validates     :category, presence: true
+
   scope	:published,				-> { where(published: true) }
   scope	:priced_more_than,		->(price) { where('price > ?', price) }
   scope	:description_includes, 	->(description) { where('description ILIKE ?', "%#{description}%") }
@@ -9,6 +11,7 @@ class Product < ActiveRecord::Base
   before_validation	:title_is_lower_case
 
   belongs_to		:category
+#  belongs_to    :Product
 
   def strip_html_from_description
   	self.description =
