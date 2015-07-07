@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  extend Enumerize
   validates 		:title, :description, presence: true
   validate 			:title_is_shorter_than_description
   validates     :category, presence: true
@@ -9,6 +10,9 @@ class Product < ActiveRecord::Base
 
   before_save		:strip_html_from_description
   before_validation	:title_is_lower_case
+
+  enumerize :difficult_level, in: [:male, :female]
+  enumerize :country, in: Country.all.map{ |name, code| code }
 
   belongs_to		:category
 #  belongs_to    :Product
