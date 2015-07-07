@@ -1,0 +1,22 @@
+<table>
+	<thead>
+		<th>Title</th>
+		<th>Price</th>
+		<th>Category</th>
+	</thead>
+	<tbody>
+<% @products.each do |product| %>
+		<tr>
+			<td>
+				<h1><%= product.title %></h1>		
+			</td>
+			<td>
+				<%= product.price %>
+			</td>
+			<td>
+				<%= product.category.title %>
+			</td>
+		</tr>
+<% end %>
+	</tbody>
+</table>

@@ -11,7 +11,7 @@ class Product < ActiveRecord::Base
   before_save		:strip_html_from_description
   before_validation	:title_is_lower_case
 
-  enumerize :difficult_level, in: [:male, :female]
+  enumerize :difficulty_level, in: [:easy, :medium, :hard]
   enumerize :country, in: Country.all.map{ |name, code| code }
 
   belongs_to		:category
