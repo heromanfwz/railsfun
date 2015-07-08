@@ -31,12 +31,10 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     if @product.destroy
     	flash[:notice] = 'Deleted successfully'
-			redirect_to products_url
 		else
 			flash.now[:notice] = 'Deleted failed......'
-			redirect_to products_url
 		end
-
+		redirect_to products_url
 	end
 
 	def create
