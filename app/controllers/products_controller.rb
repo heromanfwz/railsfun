@@ -19,7 +19,14 @@ class ProductsController < ApplicationController
 														  :published,
 														  :category_id )
 		@product = Product.new(product_params)
-		@product.save
-		redirect_to products_url
+		
+		if @product.save
+			flash[:notice] = 'You have successfully created the product'
+			redirect_to products_url
+		else
+			flash.now[:notice] = 'There is an error in your form'
+			render	:new
+		end
+
 	end
 end
