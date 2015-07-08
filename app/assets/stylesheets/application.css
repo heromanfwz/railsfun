@@ -12,4 +12,13 @@
  *
  *= require_tree .
  *= require_self
+ 
+
+ @import '_variables';
+ @import '_mixins';
+ @import 'theme';
+ @import 'layout';
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";

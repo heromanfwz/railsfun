@@ -29,6 +29,8 @@ gem 'countries'
 
 gem "slim-rails"
 
+gem 'bootstrap-sass', '~> 3.3.5'
+
 gem 'formtastic', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
