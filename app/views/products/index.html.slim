@@ -1,0 +1,15 @@
+#products_index
+	- if @products.any?
+		table.products
+			- @products.each do |product|
+			tr.product
+				td.title= product.title
+				td.price $ #{product.price}
+				td.action
+					.read_more= link_to('Read more', product_path(product))
+					.edit = link_to('Edit', edit_product_path(product))
+	- else
+		p.empty_message.clear
+			| No products found! Thank you!
+
+.copyright = "Copyright #{DateTime.now.year}"
