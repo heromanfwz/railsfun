@@ -11,13 +11,23 @@ class ProductsController < ApplicationController
 		@product = Product.new
 	end
 
+	def edit
+		@product = Product.find(params[:id])
+		render :new
+	end
+
+	def update
+		@product = Product.find(params[:id])
+		if @product.update(product_params)
+			flash[:notice] = 'You have successfully updated the product'
+			redirect_to products_url
+		else
+			flash.now[:notice] = 'Failed ......hmmmmmm'
+			render	:new
+		end
+	end
 
 	def create
-		product_params = params.require(:product).permit( :title,
-														  :description,
-														  :price,
-														  :published,
-														  :category_id )
 		@product = Product.new(product_params)
 		
 		if @product.save
@@ -29,4 +39,15 @@ class ProductsController < ApplicationController
 		end
 
 	end
+
+	private
+
+	def product_params
+	params.require(:product).permit( :title,
+													  :description,
+													  :price,
+													  :published,
+													  :category_id )
+	end
+
 end

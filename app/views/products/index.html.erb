@@ -16,6 +16,9 @@
 			<td>
 				<%= product.category.title %>
 			</td>
+			<td>
+				<%= link_to('Edit', edit_product_path(product))%>		
+			</td>
 		</tr>
 <% end %>
 	</tbody>
